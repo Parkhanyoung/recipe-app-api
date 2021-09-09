@@ -1,0 +1,14 @@
+version: "3"
+
+# 여러 개의 서비스 등록 가능
+services: 
+  # 여기선 app이라는 서비스 하나만 등록했음
+  app:
+    build:
+      context: .
+    ports: 
+      - "8000:8000"
+    volumes:
+      - ./app:/app
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000" 
