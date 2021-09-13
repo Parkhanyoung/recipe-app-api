@@ -14,6 +14,7 @@ class UserManager(BaseUserManager):
         user = self.model(email=self.normalize_email(email), **extra_fields)
         # password는 암호화를 해야 하므로 개별적으로 처리
         user.set_password(password)
+        # >> default UserManager의 _create_user에서는 user.password = make_password(password) 였음 # noqa
         user.save(using=self._db)
 
         return user
